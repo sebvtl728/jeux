@@ -9,6 +9,8 @@ class Player(pygame.sprite.Sprite):
         self.max_health = 100
         self.attack = 10
         self.velocity = 5
+        self.image = pygame.image.load('assets/player.png')
+        self.rect = self.image.get_rect()
         
 
 #Generer la fenetr de notre jeu...
@@ -18,12 +20,21 @@ screen = pygame.display.set_mode((1080, 720))
 #Importation du Bg
 background = pygame.image.load('assets/bg.jpg')
 
+#chargement player
+player = Player()
+
 running = True
 
 #boucle tant que cette condition est vrai
 
 while running:
+    #appliquer la fenetre du jeu
     screen.blit(background, (0,-200))
+    
+    #appliquer l'image du joueur
+    screen.blit(player.image, player.rect)
+    
+    #mettre à jour l'écran
     pygame.display.flip()
     
     # si le jour ferme cette fenetre 
