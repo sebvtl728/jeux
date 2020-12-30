@@ -1,6 +1,14 @@
 import pygame
 pygame.init()
 
+#création d'une classe pour representer le joueur
+class Player:
+    def __init__(self):
+        self.health = 100
+        self.max_health = 100
+        self.attack = 10
+        self.velocity = 5
+        
 
 #Generer la fenetr de notre jeu...
 pygame.display.set_caption("forest Game")
