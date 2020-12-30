@@ -29,6 +29,10 @@ while running:
     for projectile in game.player.all_projectiles:
         projectile.move()
     
+    # recuperation des monstres
+    for monster in game.all_monsters:
+        monster.forward()
+        
     #chargement des projectiles
     game.player.all_projectiles.draw(screen)
     
