@@ -2,8 +2,9 @@ import pygame
 pygame.init()
 
 #création d'une classe pour representer le joueur
-class Player:
+class Player(pygame.sprite.Sprite):
     def __init__(self):
+        super().__init__()
         self.health = 100
         self.max_health = 100
         self.attack = 10
