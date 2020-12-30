@@ -1,4 +1,5 @@
 import pygame
+import math
 from games import Game
 pygame.init()
 
@@ -12,6 +13,12 @@ screen = pygame.display.set_mode((1080, 720))
 #Importation du Bg
 background = pygame.image.load('assets/bg.jpg')
 
+#importation baniere accueil
+banner = pygame.image.load('assets/banner.png')
+banner = pygame.transform.scale(banner,(500, 500))
+banner_rect = banner.get_rect()
+banner_rect.x = math.ceil(screen.get_width() / 4)
+
 #chargement du jeu
 game = Game()
 running = True
@@ -22,37 +29,16 @@ while running:
     #appliquer la fenetre du jeu
     screen.blit(background, (0,-200))
     
-    #actualiser la barre de vie du joueur
-    game.player.update_health_bar(screen)
-    
-    #appliquer l'image du joueur
-    screen.blit(game.player.image, game.player.rect)
-    
-    #recuperation des projectiles du joueur
-    for projectile in game.player.all_projectiles:
-        projectile.move()
-    
-    # recuperation des monstres
-    for monster in game.all_monsters:
-        monster.forward()
-        monster.update_health_bar(screen)
+    #verifier si le jeu à commencé ou non
+    if game.is_playing:
+        #declancher les instructions de la partie
+        game.update(screen)
         
-    #chargement des projectiles
-    game.player.all_projectiles.draw(screen)
-    
-    #chargement des monstres
-    game.all_monsters.draw(screen)
-    
-    # verifier si le joueur souhaite aller de gauche à droite 
-    # print(game.pressed)
-    if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x + game.player.rect.width < screen.get_width():
-        game.player.move_right()
-        
-    elif game.pressed.get(pygame.K_LEFT) and game.player.rect.x > 0:
-        game.player.move_left()
-        
-    print(game.player.rect.x)
-    
+    #verifier si le jeu n'a pas commencé
+    else:
+        #add ecran de bienvenue
+        screen.blit(banner, banner_rect)
+      
     #mettre à jour l'écran
     pygame.display.flip()
     
