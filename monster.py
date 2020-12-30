@@ -27,22 +27,10 @@ class Monster(pygame.sprite.Sprite):
             self.velocity = random.randint(1, 3)
             self.health = self.max_health
                 
-    def update_health_bar(self, surface):
-        #couleur jauge de vie
-        bar_color = (111, 210,46)
-        
-        #couleur jauge arriere
-        back_bar_color = (240, 50, 9)
-            
-        #position jauge + largeur et epaisseur
-        bar_position = [self.rect.x + 10, self.rect.y - 22, self.health, 5]
-        
-        #definir la position de la jauge arriere 
-        back_bar_position = [self.rect.x + 10, self.rect.y - 22, self.max_health, 5]
-        
-        #dessiner la bar de vie
-        pygame.draw.rect(surface, back_bar_color, back_bar_position)
-        pygame.draw.rect(surface, bar_color, bar_position)
+    def update_health_bar(self, surface):     
+        #dessiner les bars de vie + couleurs + position
+        pygame.draw.rect(surface, (240, 50, 9), [self.rect.x + 10, self.rect.y - 22, self.max_health, 5])
+        pygame.draw.rect(surface, (111, 210, 46), [self.rect.x + 10, self.rect.y - 22, self.health, 5])
         
         
     def forward(self):
