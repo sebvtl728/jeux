@@ -22,6 +22,9 @@ while running:
     #appliquer la fenetre du jeu
     screen.blit(background, (0,-200))
     
+    #actualiser la barre de vie du joueur
+    game.player.update_health_bar(screen)
+    
     #appliquer l'image du joueur
     screen.blit(game.player.image, game.player.rect)
     
