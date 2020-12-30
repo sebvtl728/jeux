@@ -32,6 +32,7 @@ while running:
     # recuperation des monstres
     for monster in game.all_monsters:
         monster.forward()
+        monster.update_health_bar(screen)
         
     #chargement des projectiles
     game.player.all_projectiles.draw(screen)
