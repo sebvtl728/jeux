@@ -1,24 +1,9 @@
 import pygame
+from games import Game
 pygame.init()
 
-#création d'une classe pour representer le jeu
-class Game:
-    def __init__(self):
-        # generer le joueur
-        self.player = Player()
 
-#création d'une classe pour representer le joueur
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-        self.health = 100
-        self.max_health = 100
-        self.attack = 10
-        self.velocity = 5
-        self.image = pygame.image.load('assets/player.png')
-        self.rect = self.image.get_rect()
-        self.rect.x = 400
-        self.rect.y = 500
+
 
 #Generer la fenetr de notre jeu...
 pygame.display.set_caption("forest Game")
