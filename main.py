@@ -1,6 +1,12 @@
 import pygame
 pygame.init()
 
+#création d'une classe pour representer le jeu
+class Game:
+    def __init__(self):
+        # generer le joueur
+        self.player = Player()
+
 #création d'une classe pour representer le joueur
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -21,9 +27,8 @@ screen = pygame.display.set_mode((1080, 720))
 #Importation du Bg
 background = pygame.image.load('assets/bg.jpg')
 
-#chargement player
-player = Player()
-
+#chargement du jeu
+game = Game()
 running = True
 
 #boucle tant que cette condition est vrai
@@ -33,7 +38,7 @@ while running:
     screen.blit(background, (0,-200))
     
     #appliquer l'image du joueur
-    screen.blit(player.image, player.rect)
+    screen.blit(game.player.image, game.player.rect)
     
     #mettre à jour l'écran
     pygame.display.flip()
