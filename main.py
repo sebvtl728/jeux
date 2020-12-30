@@ -11,7 +11,8 @@ class Player(pygame.sprite.Sprite):
         self.velocity = 5
         self.image = pygame.image.load('assets/player.png')
         self.rect = self.image.get_rect()
-        
+        self.rect.x = 400
+        self.rect.y = 500
 
 #Generer la fenetr de notre jeu...
 pygame.display.set_caption("forest Game")
@@ -41,7 +42,7 @@ while running:
     for event in pygame.event.get():
         
         # que l'énenement est fermeture de fenetre
-        if event.type == pygame.quit:
+        if event.type == pygame.QUIT:
             running = False
-            pygame.quit()
+            pygame.QUI()
             print('fermeture du jeux')
