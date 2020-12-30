@@ -9,7 +9,7 @@ class Monster(pygame.sprite.Sprite):
         self.game = game
         self.health = 100
         self.max_health = 100
-        self.attack = 5
+        self.attack = 0.3
         self.image =pygame.image.load('assets/mummy.png')
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 300)
@@ -18,7 +18,8 @@ class Monster(pygame.sprite.Sprite):
         
     def damage(self, amount):
         #infliger les degats
-        self.health -= amount
+        if self.health - amount > amount:    
+            self.health -= amount
         
         #Vérifier si les points de vie est égal a 0
         if self.health <= 0:
@@ -37,3 +38,7 @@ class Monster(pygame.sprite.Sprite):
         #deplacement possible si pas de collision avec un groupe de joueur
         if not self.game.check_collision(self, self.game.all_players):
             self.rect.x -= self.velocity
+        # Si le monstre entre en collision
+        else:
+             # infliger des degats (au joueur)
+              self.game.player.damage(self.attack)

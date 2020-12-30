@@ -16,6 +16,10 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = 400
         self.rect.y = 500
         
+    def damage(self, amount):
+        self.health -= amount
+        
+        
     def update_health_bar(self, surface):     
         #dessiner les bars de vie + couleurs + position
         pygame.draw.rect(surface, (240, 50, 9), [self.rect.x + 50, self.rect.y + 20, self.max_health, 7])
