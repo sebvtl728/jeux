@@ -1,4 +1,5 @@
 import pygame 
+import random
 
 #création classe montre
 class Monster(pygame.sprite.Sprite):
@@ -15,6 +16,16 @@ class Monster(pygame.sprite.Sprite):
         self.rect.y = 540
         self.velocity = 2
         
+    def damage(self, amount):
+        #infliger les degats
+        self.health -= amount
+        
+        #Vérifier si les points de vie est égal a 0
+        if self.health <= 0:
+            #reaparaitre en nouveau monstre
+            self.rect.x = 1000
+            self.health = self.max_health
+                
     def update_health_bar(self, surface):
         #couleur jauge de vie
         bar_color = (111, 210,46)
