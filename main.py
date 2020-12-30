@@ -25,6 +25,14 @@ while running:
     #appliquer l'image du joueur
     screen.blit(game.player.image, game.player.rect)
     
+    # verifier si le joueur souhaite aller de gauche à droite 
+    # print(game.pressed)
+    if game.pressed.get(pygame.K_RIGHT):
+        game.player.move_right()
+        
+    elif game.pressed.get(pygame.K_LEFT):
+        game.player.move_left()
+    
     #mettre à jour l'écran
     pygame.display.flip()
     
@@ -39,13 +47,6 @@ while running:
             
         #detection de mouvement du joueur
         elif event.type == pygame.KEYDOWN:
-            
-            #quelle touche utilisée
-            if event.key == pygame.K_RIGHT:
-                #print("deplacement vers la droite")
-                game.player.move_right()
-                
-            elif event.key == pygame.K_LEFT:
-                #print('deplacement vers la gauche')
-                game.player.move_left()
-        
+            game.pressed[event.key] = True
+        elif event.type == pygame.KEYUP:
+            game.pressed[event.key] = False
