@@ -32,6 +32,9 @@ while running:
     #chargement des projectiles
     game.player.all_projectiles.draw(screen)
     
+    #chargement des monstres
+    game.all_monsters.draw(screen)
+    
     # verifier si le joueur souhaite aller de gauche à droite 
     # print(game.pressed)
     if game.pressed.get(pygame.K_RIGHT) and game.player.rect.x + game.player.rect.width < screen.get_width():
