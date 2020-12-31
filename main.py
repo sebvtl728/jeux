@@ -47,7 +47,7 @@ while running:
         #add ecran de bienvenue
         screen.blit(play_button, play_button_rect)
         screen.blit(banner, banner_rect)
-      
+    
     #mettre à jour l'écran
     pygame.display.flip()
     
@@ -70,3 +70,10 @@ while running:
             
         elif event.type == pygame.KEYUP:
             game.pressed[event.key] = False
+            
+           
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            #verification si la souris est en collison avec le bouton play
+            if play_button_rect.collidepoint(event.pos):
+                #mettre le jeu en marche
+                game.is_playing = True
