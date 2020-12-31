@@ -19,6 +19,13 @@ class Game:
         self.spawn_monster()
         self.spawn_monster()
         
+    def game_over(self):
+        # reinitialisation du jeu pour une nouvelle partie
+        self.all_monsters = pygame.sprite.Group()
+        self.player.health = self.player.max_health
+        self.is_playing = False
+        
+        
     def update(self, screen):
         #actualiser la barre de vie du joueur
         self.player.update_health_bar(screen)
