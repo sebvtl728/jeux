@@ -16,6 +16,9 @@ class Game:
         #groupe de monstre
         self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
+           
+    def start(self):
+        self.is_playing = True
         self.spawn_monster()
         self.spawn_monster()
         
@@ -27,12 +30,12 @@ class Game:
         
         
     def update(self, screen):
-        #actualiser la barre de vie du joueur
-        self.player.update_health_bar(screen)
-    
         #appliquer l'image du joueur
         screen.blit(self.player.image, self.player.rect)
     
+        #actualiser la barre de vie du joueur
+        self.player.update_health_bar(screen)
+        
         #recuperation des projectiles du joueur
         for projectile in self.player.all_projectiles:
             projectile.move()
