@@ -19,6 +19,14 @@ banner = pygame.transform.scale(banner,(500, 500))
 banner_rect = banner.get_rect()
 banner_rect.x = math.ceil(screen.get_width() / 4)
 
+#import bouton de lancement de jeux
+play_button = pygame.image.load('assets/button.png')
+play_button = pygame.transform.scale(play_button,(400, 150))
+play_button_rect = play_button.get_rect()
+play_button_rect.x = math.ceil(screen.get_width() / 3.33 + 10)
+play_button_rect.y = math.ceil(screen.get_height() / 2)
+
+
 #chargement du jeu
 game = Game()
 running = True
@@ -37,6 +45,7 @@ while running:
     #verifier si le jeu n'a pas commencé
     else:
         #add ecran de bienvenue
+        screen.blit(play_button, play_button_rect)
         screen.blit(banner, banner_rect)
       
     #mettre à jour l'écran
