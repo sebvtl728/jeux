@@ -1,9 +1,7 @@
 import pygame
 import random
 
-
 #creation classe de comete
-
 class Comet(pygame.sprite.Sprite):
     
     def __init__(self, comet_event):
@@ -18,6 +16,19 @@ class Comet(pygame.sprite.Sprite):
         
     def remove(self):
        self.comet_event.all_comets.remove(self) 
+       
+       #verifier si le nombre de commettes est égale a 0
+       if len(self.comet_event.all_comets) == 0:
+           print('fin des comettes')
+           
+           #remettre la bar a zero
+           self.comet_event.reset_percent()
+           
+           #retour des momies apres commettes
+           self.comet_event.game.spawn_monster()
+           self.comet_event.game.spawn_monster()
+           self.comet_event.game.spawn_monster()
+           
         
     def fall(self):
         self.rect.y += self.velocity
@@ -36,6 +47,14 @@ class Comet(pygame.sprite.Sprite):
             
             #retirer la comette
             self.remove()
+            
+            #verifier si il n'y a plus de comettes dans le jeu
+            if len(self.comet_event.all_comets) == 0:
+                print('l\'evenement commette est terminer')
+                
+                #remettre la jauge de au maximum
+                self.comet_event.reset_percent()
+                self.comet_event.fall_mode = False
             
             #impacter 20 points de degats au joueur
             self.comet_event.game.player.damage(20)

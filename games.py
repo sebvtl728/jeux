@@ -7,7 +7,7 @@ from monster import Monster
 class Game:
     def __init__(self):
         # définir si le jeu a commancé
-        self.is_playing = True
+        self.is_playing = False
         
         # generer le joueur
         self.all_players = pygame.sprite.Group()
