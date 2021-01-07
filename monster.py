@@ -9,7 +9,7 @@ class Monster(pygame.sprite.Sprite):
         self.game = game
         self.health = 100
         self.max_health = 100
-        self.attack = 0.3
+        self.attack = 0.5
         self.image =pygame.image.load('assets/mummy.png')
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 300)
@@ -18,7 +18,7 @@ class Monster(pygame.sprite.Sprite):
         
     def damage(self, amount):
         #infliger les degats
-        if self.health - amount > amount:    
+        if self.max_health - amount > amount:    
             self.health -= amount
         
         #Vérifier si les points de vie est égal a 0
