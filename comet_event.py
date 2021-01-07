@@ -24,8 +24,10 @@ class CometFallEvent:
         self.percent = 0
         
     def meteor_fall(self):
-        #faire apparaitre la premiere comette
-        self.all_comets.add(Comet(self))
+        #boucle pour les comettes en 1 et 10
+        for i in range(1, 10):
+            #faire apparaitre la premiere comette
+            self.all_comets.add(Comet(self))
     
     def attemp_fall(self):
         #la jauge des comets est completment chargé
