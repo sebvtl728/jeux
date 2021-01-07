@@ -1,5 +1,6 @@
 import pygame 
 from player import Player
+from comet_event import CometFallEvent
 from monster import Monster
 
 #création d'une classe pour representer le jeu
@@ -12,6 +13,9 @@ class Game:
         self.all_players = pygame.sprite.Group()
         self.player = Player(self)
         self.all_players.add(self.player)
+        
+        #generer l'attaque des comets
+        self.comet_event = CometFallEvent()
         
         #groupe de monstre
         self.all_monsters = pygame.sprite.Group()
@@ -35,6 +39,9 @@ class Game:
     
         #actualiser la barre de vie du joueur
         self.player.update_health_bar(screen)
+        
+        #actualiser la barre d'attaque des comets
+        self.comet_event.update_bar(screen)
         
         #recuperation des projectiles du joueur
         for projectile in self.player.all_projectiles:
