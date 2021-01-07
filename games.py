@@ -7,7 +7,7 @@ from monster import Monster
 class Game:
     def __init__(self):
         # définir si le jeu a commancé
-        self.is_playing = False
+        self.is_playing = True
         
         # generer le joueur
         self.all_players = pygame.sprite.Group()
@@ -51,12 +51,19 @@ class Game:
         for monster in self.all_monsters:
             monster.forward()
             monster.update_health_bar(screen)
+            
+        #recuperation des commettes
+        for comet in self.comet_event.all_comets:
+            comet.fall()
         
         #chargement des projectiles
         self.player.all_projectiles.draw(screen)
     
         #chargement des monstres
         self.all_monsters.draw(screen)
+        
+        #chargement des comettes
+        self.comet_event.all_comets.draw(screen)
     
         # verifier si le joueur souhaite aller de gauche à droite 
         # print(game.pressed)
@@ -66,7 +73,7 @@ class Game:
         elif self.pressed.get(pygame.K_LEFT) and self.player.rect.x > 0:
             self.player.move_left()
         
-        print(self.player.rect.x)
+        #print(self.player.rect.x)
         
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
