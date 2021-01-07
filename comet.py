@@ -27,3 +27,15 @@ class Comet(pygame.sprite.Sprite):
             print('sol')
             #retirer la comette
             self.remove()
+            
+        #verifier si la boule de feu touche le joueur
+        if self.comet_event.game.check_collision(
+            self,self.comet_event.game.all_players
+        ):
+            print('joueur touché !')
+            
+            #retirer la comette
+            self.remove()
+            
+            #impacter 20 points de degats au joueur
+            self.comet_event.game.player.damage(20)

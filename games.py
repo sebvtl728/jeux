@@ -15,7 +15,7 @@ class Game:
         self.all_players.add(self.player)
         
         #generer l'attaque des comets
-        self.comet_event = CometFallEvent()
+        self.comet_event = CometFallEvent(self)
         
         #groupe de monstre
         self.all_monsters = pygame.sprite.Group()

@@ -5,9 +5,10 @@ from comet import Comet
 class CometFallEvent:
     
     #lors du chargement -> créer un compteur
-    def __init__(self):
+    def __init__(self, game):
         self.percent = 0
         self.percent_speed = 33
+        self.game = game
         
         #définir un groupe sprite pour le stockage des cometes
         self.all_comets = pygame.sprite.Group()
