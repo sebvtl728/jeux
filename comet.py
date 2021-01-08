@@ -25,9 +25,10 @@ class Comet(pygame.sprite.Sprite):
            self.comet_event.reset_percent()
            
            #retour des momies apres commettes
-           self.comet_event.game.spawn_monster()
-           self.comet_event.game.spawn_monster()
-           self.comet_event.game.spawn_monster()
+        #    self.comet_event.game.spawn_monster()
+        #    self.comet_event.game.spawn_monster()
+        #    self.comet_event.game.spawn_monster()
+           self.comet_event.game.start()
            
         
     def fall(self):
