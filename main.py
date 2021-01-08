@@ -3,8 +3,9 @@ import math
 from games import Game
 pygame.init()
 
-
-
+#definir clock
+clock = pygame.time.Clock()
+FPS = 60
 
 #Generer la fenetr de notre jeu...
 pygame.display.set_caption("forest Game")
@@ -77,3 +78,6 @@ while running:
             if play_button_rect.collidepoint(event.pos):
                 #mettre le jeu en marche
                 game.start()
+                
+    #fixer le nombre de fps
+    clock.tick(FPS)
