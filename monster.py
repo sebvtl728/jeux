@@ -5,8 +5,8 @@ import animation
 #création classe montre
 class Monster(animation.AnimateSprite):
     
-    def __init__(self, game):
-        super().__init__('mummy')
+    def __init__(self, game, name, size, offset=0):
+        super().__init__(name, size)
         self.game = game
         self.health = 100
         self.max_health = 100
@@ -14,7 +14,7 @@ class Monster(animation.AnimateSprite):
         # self.image =pygame.image.load('assets/mummy.png')
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 300)
-        self.rect.y = 540
+        self.rect.y = 540 - offset
         self.velocity = random.randint(1, 3)
         self.start_animation()
         
@@ -54,3 +54,17 @@ class Monster(animation.AnimateSprite):
         else:
              # infliger des degats (au joueur)
               self.game.player.damage(self.attack)
+              
+#definir une class pour les mechants
+class Mechant(Monster):
+    
+    def __init__(self, game):
+        super().__init__(game, 'mummy', (130, 130))
+        
+#definir une class pour le super monstre
+class SuperMechant(Monster):
+    
+    def __init__(self, game):
+        super().__init__(game, 'alien',(300, 300), 130)
+        self.health = 250
+        self.max_health = 250

@@ -2,6 +2,8 @@ import pygame
 from player import Player
 from comet_event import CometFallEvent
 from monster import Monster
+from monster import Mechant
+from monster import SuperMechant
 
 #création d'une classe pour representer le jeu
 class Game:
@@ -23,8 +25,9 @@ class Game:
            
     def start(self):
         self.is_playing = True
-        self.spawn_monster()
-        self.spawn_monster()
+        self.spawn_monster(Mechant)
+        self.spawn_monster(Mechant)
+        self.spawn_monster(SuperMechant)
         
     def game_over(self):
         # reinitialisation du jeu pour une nouvelle partie
@@ -86,6 +89,5 @@ class Game:
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
         
-    def spawn_monster(self):
-        monster = Monster(self)
-        self.all_monsters.add(monster)
+    def spawn_monster(self, mechant_class_name):
+        self.all_monsters.add(mechant_class_name.__call__(self))
